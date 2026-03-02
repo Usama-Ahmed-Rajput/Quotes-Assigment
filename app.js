@@ -1,4 +1,3 @@
-// ── Firebase SDK (CDN) ──
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
   getFirestore,
@@ -11,7 +10,7 @@ import {
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ── Firebase Config ──
+// config
 const firebaseConfig = {
   apiKey: "AIzaSyB0mh4TZrU8e7tcj8l_-3Qk2TlUkaLnLgI",
   authDomain: "quotes-6432a.firebaseapp.com",
@@ -26,14 +25,13 @@ const db = getFirestore(app);
 
 const quoteCollection = collection(db, "quotes");
 
-// ── DOM refs ──
+// ye 3 cheezein chahiye thi
 const quoteInput = document.getElementById("quoteInput");
 const addbtn = document.getElementById("addBtn");
 const quoteList = document.getElementById("quoteList");
 
-let editingDocId = null;
+let editingDocId = null; 
 
-// ── ADD QUOTE ──
 addbtn.addEventListener("click", addQuote);
 quoteInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") addQuote();
@@ -66,7 +64,6 @@ async function addQuote() {
   addbtn.innerHTML = "<span>＋</span> Add Quote";
 }
 
-// ── LOAD / RENDER QUOTES ──
 async function loadQuotes() {
   quoteList.innerHTML = "";
 
@@ -97,6 +94,7 @@ async function loadQuotes() {
       text.className = "quote-text";
       text.textContent = docSnap.data().quote;
 
+      // time wala part 
       const timeEl = document.createElement("div");
       timeEl.className = "quote-time";
       const ts = docSnap.data().time;
@@ -115,6 +113,7 @@ async function loadQuotes() {
       editBtn.innerHTML = "✎ Edit";
       editBtn.addEventListener("click", () => openEditModal(docSnap.id, docSnap.data().quote));
 
+      // delte btn
       const deleteBtn = document.createElement("button");
       deleteBtn.className = "btn-delete";
       deleteBtn.innerHTML = "✕ Delete";
@@ -135,8 +134,8 @@ async function loadQuotes() {
   }
 }
 
-// ── DELETE QUOTE ──
 async function handleDelete(id, li) {
+  // pehle animate hoga
   li.style.transition = "opacity 0.2s, transform 0.2s";
   li.style.opacity = "0";
   li.style.transform = "translateX(20px)";
@@ -152,7 +151,6 @@ async function handleDelete(id, li) {
   }, 200);
 }
 
-// ── EDIT QUOTE ──
 function openEditModal(id, oldQuote) {
   editingDocId = id;
   document.getElementById("editInput").value = oldQuote;
@@ -178,11 +176,11 @@ window.saveEdit = async function () {
     await loadQuotes();
   } catch (e) {
     console.error(e);
-    showToast("Update failed.", "error");
+    showToast("Update failed.", "error"); // TODO: better error message
   }
 };
 
-// ── TOAST ──
+// toast 3 sec baad chala jata hai
 function showToast(msg, type = "info") {
   const t = document.getElementById("toast");
   const icons = { success: "✅", error: "❌", info: "ℹ️" };
@@ -192,5 +190,4 @@ function showToast(msg, type = "info") {
   t._timer = setTimeout(() => t.classList.remove("show"), 3000);
 }
 
-// ── Init ──
 loadQuotes();
