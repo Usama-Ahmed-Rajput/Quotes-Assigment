@@ -268,46 +268,6 @@
       .empty-icon { font-size: 3rem; opacity: 0.3; margin-bottom: 0.8rem; }
       .empty p { font-size: 0.9rem; }
 
-      /* ── Firestore log ── */
-      .fs-console {
-        margin-top: 2rem;
-        background: #0d0d14;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        overflow: hidden;
-        animation: fadeUp 0.5s 0.3s ease both;
-      }
-      .fs-console-header {
-        background: #111119;
-        padding: 0.6rem 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .fs-console-header span {
-        font-size: 0.6rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #ffcc02;
-        font-family: 'Inter', monospace;
-      }
-      .connected { margin-left: auto; font-size: 0.55rem !important; color: var(--green) !important; letter-spacing: 0.1em !important; }
-      .fs-log {
-        padding: 0.8rem 1rem;
-        font-family: 'Inter', monospace;
-        font-size: 0.65rem;
-        line-height: 2;
-        color: #5a5a8a;
-        max-height: 120px;
-        overflow-y: auto;
-      }
-      .log-add { color: var(--green); }
-      .log-del { color: var(--accent2); }
-      .log-upd { color: var(--orange); }
-      .log-rd  { color: #64b5f6; }
-      .log-ts  { color: #3a3a5a; }
-
       /* ── Edit Modal ── */
       .modal-bg {
         position: fixed; inset: 0;
@@ -410,3 +370,4 @@
       ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: transparent; }
       ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
