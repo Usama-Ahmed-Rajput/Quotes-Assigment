@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <!-- Header -->
+    <div class="header">
+      <h1 class="title">Quotation</h1>
+      <p class="subtitle">Add, edit, and manage your quotes — stored in Firestore</p>
+    </div>
+
+    <div class="container">
+
+      <!-- Input Card -->
+      <div class="input-card">
+        <label class="input-label">New Quote</label>
+        <div class="input-row">
+          <input type="text" placeholder="Enter your quote here…" id="quoteInput" />
+          <button id="addBtn">
+            <span>＋</span> Add Quote
+          </button>
+        </div>
+      </div>
+
+      <!-- List Header -->
+      <div class="list-header">
+        <span class="list-title">All Quotes</span>
+        <span class="count-badge" id="countBadge">0 quotes</span>
+      </div>
+
+      <!-- Quotes -->
+      <ul id="quoteList"></ul>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <div class="modal-title">✎ Edit Quote</div>
+        <textarea id="editInput" placeholder="Update your quote…"></textarea>
+        <div class="modal-btns">
+          <button class="btn-cancel-modal" onclick="closeModal()">Cancel</button>
+          <button class="btn-save-modal" onclick="saveEdit()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    
+    <script src="app.js"  type="module"></script>
+  </body>
+</html>
